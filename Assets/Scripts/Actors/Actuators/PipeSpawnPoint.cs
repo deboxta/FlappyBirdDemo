@@ -10,10 +10,12 @@ namespace Game
         [SerializeField] private int spawnDelay = 4;
 
         private GameController gameController;
+        private PrefabFactory prefabFactory;
 
         private void Awake()
         {
             gameController = Finder.GameController;
+            prefabFactory = Finder.PrefabFactory;
         }
 
         private void OnEnable()
@@ -31,7 +33,8 @@ namespace Game
                 yield return new WaitForSeconds(spawnDelay);
 
                 if (gameController.GameState != GameState.MainMenu && gameController.GameState != GameState.GameOver)
-                    Instantiate(pipePrefab, transform.position, Quaternion.identity); // quaternion identity = 0 rotation
+                    prefabFactory.CreatePipePair(transform.position, Quaternion.identity, null);
+                //Instantiate(pipePrefab, transform.position, Quaternion.identity); // quaternion identity = 0 rotation // fait la meme chose que la ligne du dessus mais sans la factory
             }
         }
     }
