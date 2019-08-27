@@ -10,6 +10,7 @@ namespace Game
         private static PlayerDeathEventChannel playerDeathEventChannel;
         private static ScoreEventChannel scoreEventChannel;
         private static GameController gameController;
+        private static PrefabFactory prefabFactory;
 
 
         public static GameController GameController
@@ -39,6 +40,16 @@ namespace Game
                 if (scoreEventChannel == null)
                     scoreEventChannel = GameObject.FindWithTag(GAME_CONTROLLER_TAG).GetComponent<ScoreEventChannel>();
                 return scoreEventChannel;
+            }
+        }
+        
+        public static PrefabFactory PrefabFactory
+        {
+            get
+            {
+                if (prefabFactory == null)
+                    prefabFactory = GameObject.FindWithTag(GAME_CONTROLLER_TAG).GetComponent<PrefabFactory>();
+                return prefabFactory;
             }
         }
     }
