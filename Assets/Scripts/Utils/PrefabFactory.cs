@@ -13,9 +13,10 @@ namespace Game
         
         public GameObject CreatePipePair(Vector3 position, Quaternion rotation, GameObject parent)
         {
-            var gameObject_MyVAriable = Instantiate(pipePairPrefab, position, rotation);
-            if (parent) gameObject_MyVAriable.transform.parent = parent.transform;
-            return gameObject_MyVAriable;
+            var pipePair = Instantiate(pipePairPrefab, position, rotation);
+            if (parent) pipePair.transform.parent = parent.transform;
+            return pipePair;
         }
+        
     }
 }
